@@ -6,11 +6,12 @@ def sysc_git(blog_path):
     os.system("git status; git pull")
 
 
-def creat_new_blog(blog_path, blog_name):
+def creat_new_blog(blog_path, blog_file):
     print "\nGenerating the blog......"
     os.system("cp /Users/MICKEY/Github/BlogGenerator/templates/default.html " +
-              blog_path + "/article/" + blog_name + ".html")
-    os.system("cd " + blog_path + "/article ; atom " + blog_name + ".html")
+              blog_path + "/article/" + blog_file)
+    os.chdir(blog_path + "/article")
+    os.system("atom " + blog_file)
     print "\nNew blog has been created, please edit it in Atom.\n"
 
 
@@ -24,10 +25,11 @@ def main():
     sysc_git(blog_path)
     new_blog = raw_input("\nDo you want to start a new blog?(Y/N)\n")
     if new_blog.upper() == "Y":
-        blog_name = raw_input("\nwhat is the name of your new blog?\n")
-        if blog_name == "":
-            blog_name = "new_blog"
-    creat_new_blog(blog_path, blog_name)
+        blog_file = raw_input(
+            "\nwhat is the file of your new blog?\n") + ".html"
+        if blog_file == ".html":
+            blog_file = "new_blog.html"
+    creat_new_blog(blog_path, blog_file)
 
 
 main()
