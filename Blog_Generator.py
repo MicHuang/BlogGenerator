@@ -29,7 +29,7 @@ def main():
     new_blog = raw_input("\nDo you want to start a new blog?(Y/N)\n")
     if new_blog.upper() == "Y":
         blog_file = raw_input(
-            "\nwhat is the file of your new blog?\n") + ".html"
+            "\nwhat is the filename of your new blog?\n") + ".html"
         if blog_file == ".html":
             blog_file = "new_blog.html"
 
